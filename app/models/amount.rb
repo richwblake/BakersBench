@@ -1,2 +1,3 @@
 class Amount < ApplicationRecord
+    
 end
