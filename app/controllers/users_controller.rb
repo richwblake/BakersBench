@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     before_action :find_user, only: [:show, :edit, :update, :destroy]
+    before_action :logged_in?, only: [:index, :show, :edit, :destroy]
 
     def index
     end
@@ -15,9 +16,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            redirect_to user_path(@user)
+            redirect_to user_path(@user), notice: "User created successfully"
         else
-            render :new
+            redirect_to new_user_path, alert: "Please try again, leaving no fields blank"
         end
     end
 
