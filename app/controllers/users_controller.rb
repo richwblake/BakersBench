@@ -9,6 +9,18 @@ class UsersController < ApplicationController
 
     def show
     end
+
+    def edit
+        alert_and_redirect_due_to_bad_permissions @user unless @user == current_user
+    end
+
+    def update
+        if @user.update(user_params)
+            redirect_to user_path(@user), alert: "User updated successfully"
+        else
+            redirect_to edit_user_path(@user), alert: "Please try again"
+        end
+    end
     
     def new
         @user = User.new
@@ -25,6 +37,10 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        alert_and_redirect_due_to_bad_permissions @user unless @user == current_user
+        session.delete :user_id
+        @user.destroy
+        redirect_to root_path
     end
 
     private
