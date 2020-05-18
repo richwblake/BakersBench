@@ -9,4 +9,6 @@ class User < ApplicationRecord
     # Validations on user creation
     validates :name, :email, :password, presence: true
     validates :email, uniqueness: true
+
+    
 end
