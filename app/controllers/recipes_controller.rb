@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     end
     
     def show
-        
+
     end
 
     def new
@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
         @recipe.creator_id = @user.id
         @recipe.subscriptions.last.user = @user
         if @recipe.save
-            redirect_to user_recipe_path(@recipe.id), alert: "Recipe succesfully created, dig in!"
+            redirect_to recipe_path(@recipe), alert: "Recipe succesfully created, dig in!"
         else    
             redirect_to new_user_recipe_path, alert: "Invalid recipe, please try again"
         end
