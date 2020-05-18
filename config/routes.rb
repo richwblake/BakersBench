@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :recipes
   end
 
-  resources :recipes
+  resources :recipes, only: [:index]
 
   resources :sessions, only: [:new, :create, :destroy]
 end

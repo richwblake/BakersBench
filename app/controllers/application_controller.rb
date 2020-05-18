@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
     end
 
     def alert_and_redirect_due_to_bad_permissions(user)
-        redirect_to user_path(user), alert: "You cannot modify this user as you are not that user!"
+        redirect_to user_path(user), alert: "You cannot modify this user's information, as you are not that user!"
     end
 end
