@@ -3,6 +3,10 @@ module ApplicationHelper
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
+    def is_logged_in?
+        !!current_user
+    end
+
     def flash_alert
         if flash[:alert]
             flash[:alert]

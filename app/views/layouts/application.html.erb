@@ -12,6 +12,18 @@
   <body>
     <%= flash_alert %>
     <%= flash_notice %>
+
     <%= yield %>
+
+    <footer>
+      <hr>
+    <% if is_logged_in? %>
+      <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to "Go to Login Page", new_session_path %>
+      <br>
+      <%= link_to "Go to Home Page", root_path %>
+    <% end %>
+  </footer>
   </body>
 </html>
