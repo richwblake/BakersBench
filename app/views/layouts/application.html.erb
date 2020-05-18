@@ -9,6 +9,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <% if is_logged_in? %>
+      <%= link_to "My Profile", user_path(current_user) %>
+      <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+      <hr>
+    <% else %>
+      <%= link_to "Go to Login Page", new_session_path %>
+      <br>
+      <%= link_to "Go to Home Page", root_path %>
+      <br>
+      <%= link_to "Create new Account", new_user_path %>
+      <hr>
+    <% end %>
+  </header>
+
   <body>
     <%= flash_alert %>
     <%= flash_notice %>
@@ -17,16 +32,7 @@
 
     <footer>
       <hr>
-    <% if is_logged_in? %>
-      <%= link_to "My Profile", user_path(current_user) %><br><br>
-      <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Go to Login Page", new_session_path %>
-      <br>
-      <%= link_to "Go to Home Page", root_path %>
-      <br>
-      <%= link_to "Create new Account", new_user_path %>
-    <% end %>
+      <small>Copyright Baker's Bench 2020</small>
   </footer>
   </body>
 </html>
