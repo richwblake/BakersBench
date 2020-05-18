@@ -1,0 +1,7 @@
+<h1>Baker's Bench Users</h1>
+<% @users.each do |user| %>
+    <h2><%= user.name %></h2>
+    <h4>Recipe Subscriptions: <%= user.recipes.count %></h4>
+    <h4><%= link_to "Go to Profile", user_path(user) %></h4>
+    <br>
+<% end %>
