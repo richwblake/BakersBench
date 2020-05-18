@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
     # ActiveRecord associations
     has_many :subscriptions
     has_many :users, through: :subscriptions
+    accepts_nested_attributes_for :subscriptions
 
     has_many :recipe_ingredients
     has_many :ingredients, through: :recipe_ingredients

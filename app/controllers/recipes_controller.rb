@@ -24,6 +24,8 @@ class RecipesController < ApplicationController
 
     def create
         @recipe = Recipe.new(recipe_params)
+        @recipe.creator_id = @user.id
+        @recipe.subscriptions.last.user = @user
         if @recipe.save
             redirect_to user_recipe_path(@recipe.id), alert: "Recipe succesfully created, dig in!"
         else
@@ -48,7 +50,12 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params
-        params.require(:recipe).permit(:title, :total_prep_time, :description, :creator_id)
+        params.require(:recipe).permit(
+            :title, 
+            :total_prep_time, 
+            :description, 
+            :creator_id, 
+            subscriptions_attributes: [:sub_comment])
     end
 
     def find_recipe

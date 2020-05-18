@@ -2,6 +2,12 @@
 
 <%= render partial: 'form', locals: {f: f} %>
 
+<%= f.fields_for :subscriptions, Subscription.new(user: current_user) do |sub| %>
+    <%= sub.label :subscription_comment %><br>
+    <%= sub.text_field :sub_comment %><br>
+    <br>
+<% end %>
+
 <%= f.submit "Create Recipe" %>
 
 <% end %>
