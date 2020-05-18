@@ -14,4 +14,12 @@
 
 <% if current_user_is_not_subscribed_to @recipe %>
     <p>Leave a comment and subscribe!</p>
+    <%= form_for :subscription, :url => {controller: "subscriptions", action: "create"} do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :recipe_id, value: @recipe.id %>
+        <%= f.label :comment %><br>
+        <%= f.text_area :sub_comment %><br>
+
+        <%= f.submit "Click to Subscribe" %>
+    <% end %>
 <% end %>
