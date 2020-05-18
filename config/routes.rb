@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static#home'
+  get 'auth/facebook/callback', to: 'sessions#omniauth'
 
   resources :users
   
