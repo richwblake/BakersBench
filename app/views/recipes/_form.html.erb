@@ -1,0 +1,13 @@
+<%= form_for @recipe do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <br>
+    <%= f.label :total_prep_time %><br>
+    <%= f.text_field :total_prep_time %><br>
+    <br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    <br>
+
+    <%= f.submit "Create Recipe" %>
+<% end %>
