@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :recipes, except: [:show]
   end
 
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :search, :edit, :update, :destroy]
 
   resources :sessions, only: [:new, :create, :destroy]
 

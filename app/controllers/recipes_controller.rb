@@ -35,7 +35,8 @@ class RecipesController < ApplicationController
     end
 
     def edit
-        if @user == current_user
+        # byebug
+        if current_user.id == @recipe.creator_id
             @recipe
         else
             alert_and_redirect_due_to_bad_permissions @user
@@ -43,9 +44,19 @@ class RecipesController < ApplicationController
     end
 
     def update
+        if @recipe.update(recipe_params)
+            redirect_to recipe_path(@recipe), notice: "Recipe updated successfully"
+        else
+            redirect_to edit_recipe_path(@recipe), alert: "Please try again"
+        end
     end
 
     def destroy
+        if current_user.id == @recipe.creator_id
+            @recipe.destroy
+        else
+            alert_and_redirect_due_to_bad_permissions current_user
+        end
     end
 
     private

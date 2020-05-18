@@ -2,7 +2,7 @@
 <h4><%= "Total Time Required: #{@recipe.total_prep_time}" %></h4>
 <p><%= "Description: #{@recipe.description}" %></p>
 <h4><%= "Number of subscribers: #{@recipe.subscriptions.count} " %></h4>
-<small>Created by: <%= find_original_creator_for @recipe %></small>
+<small>Created by: <%= (find_original_creator_for (@recipe)).name%></small>
 
 <hr>
 
@@ -23,4 +23,8 @@
 
         <%= f.submit "Click to Subscribe" %>
     <% end %>
+<% end %>
+
+<% if (current_user == find_original_creator_for(@recipe)) %>
+    <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
 <% end %>

@@ -8,6 +8,6 @@ module RecipeHelper
     end
 
     def find_original_creator_for(recipe)
-        User.find_by(id: recipe.creator_id).name
+        User.find_by(id: recipe.creator_id)
     end
 end
