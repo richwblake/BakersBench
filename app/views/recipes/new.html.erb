@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<%= form_for @recipe, :url => {controller: 'recipes', action: 'create'} do |f| %>
+
+<%= render partial: 'form', locals: {f: f} %>
+
+<%= f.submit "Create Recipe" %>
+
+<% end %>

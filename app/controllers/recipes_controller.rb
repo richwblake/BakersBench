@@ -25,7 +25,9 @@ class RecipesController < ApplicationController
     def create
         @recipe = Recipe.new(recipe_params)
         if @recipe.save
+            redirect_to user_recipe_path(@recipe.id), alert: "Recipe succesfully created, dig in!"
         else
+            redirect_to new_user_recipe_path, alert: "Invalid recipe, please try again"
         end
     end
 

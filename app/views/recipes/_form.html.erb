@@ -1,4 +1,4 @@
-<%= form_for @recipe, :url => {controller: 'recipes', action: 'create'} do |f| %>
+
     <%= f.label :title %><br>
     <%= f.text_field :title %><br>
     <br>
@@ -8,6 +8,3 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %><br>
     <br>
-
-    <%= f.submit "Create Recipe" %>
-<% end %>
