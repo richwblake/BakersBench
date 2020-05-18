@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+    # ActiveRecord associations
     has_many :subscriptions
     has_many :users, through: :subscriptions
 
@@ -7,6 +8,9 @@ class Recipe < ApplicationRecord
 
     has_many :amounts, through: :ingredients
     has_many :ingredient_types, through: :ingredients
+
+    # Validations on model attributes
+    validates :title, :total_prep_time, :description, presence: true
 
     def owner
         User.find_by(id: self.creator_id)
