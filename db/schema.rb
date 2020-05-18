@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_190634) do
+ActiveRecord::Schema.define(version: 2020_05_18_024059) do
 
   create_table "amounts", force: :cascade do |t|
     t.integer "mass"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_190634) do
     t.integer "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
   end
 
   create_table "subscriptions", force: :cascade do |t|
