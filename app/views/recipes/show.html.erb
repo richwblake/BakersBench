@@ -1,1 +1,8 @@
-<%= @recipe.title %>
+<h1><%= @recipe.title %></h1>
+<h4><%= "Total Time Required: #{@recipe.total_prep_time}" %></h4>
+<p><%= "Description: #{@recipe.description}" %></p>
+<h4><%= "Number of subscribers: #{@recipe.subscriptions.count} " %></h4>
+
+<% if current_user_is_not_subscribed_to @recipe %>
+    Click to subscribe
+<% end %>
