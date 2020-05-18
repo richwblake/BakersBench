@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users
   
   resources :users, only: [:show] do 
-    resources :recipes
+    resources :recipes, except: [:show]
   end
 
-  resources :recipes, only: [:index]
+  resources :recipes, only: [:index, :show]
 
   resources :sessions, only: [:new, :create, :destroy]
 end
