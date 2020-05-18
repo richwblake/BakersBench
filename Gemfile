@@ -23,8 +23,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 # Omniauth
 gem 'omniauth'
-# Omniauth for google
-gem 'omniauth-google'
+# Omniauth for facebook
+gem 'omniauth-facebook'
+# dotenv-rails
+gem 'dotenv-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
