@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     end
 
     def update
+        alert_and_redirect_due_to_bad_permissions @user unless @user == current_user
         if @user.update(user_params)
             redirect_to user_path(@user), alert: "User updated successfully"
         else
