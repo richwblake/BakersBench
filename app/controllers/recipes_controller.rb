@@ -15,6 +15,16 @@ class RecipesController < ApplicationController
 
     end
 
+    def search
+        # binding.pry
+        # @recipes = Recipe.find_recipes_by_title(params[:q]) || 
+        # render :search
+        # @recipes = Recipe.all
+        if params[:q]
+            @recipes = Recipe.find_recipes_by_title params[:q]
+        end
+    end
+
     def new
         if @user == current_user
             @recipe = Recipe.new
@@ -63,6 +73,7 @@ class RecipesController < ApplicationController
 
     def recipe_params
         params.require(:recipe).permit(
+            :q,
             :title, 
             :total_prep_time, 
             :description, 

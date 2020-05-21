@@ -16,4 +16,8 @@ class Recipe < ApplicationRecord
     def owner
         User.find_by(id: self.creator_id)
     end
+
+    def self.find_recipes_by_title(query)
+        where("title LIKE ?", query)
+    end
 end
