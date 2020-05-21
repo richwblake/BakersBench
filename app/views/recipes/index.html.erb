@@ -1,6 +1,11 @@
-<h1><%= "#{@user.name}'s Recipes" %></h1>
+<%= form_with(url: "/recipes", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
     <% @recipes.each do |recipe| %>
+    <% binding.pry %>
         <h3><%= link_to "Title: #{recipe.title}", recipe_path(recipe.id) %></h3>
         <%= "Description: #{recipe.description}" %><br>
         <%= "Total Time Required: #{recipe.total_prep_time}" %><br>

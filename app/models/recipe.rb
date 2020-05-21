@@ -16,4 +16,6 @@ class Recipe < ApplicationRecord
     def owner
         User.find_by(id: self.creator_id)
     end
+
+    scope :find_recipes_by_title, ->(title) {Recipe.where("title LIKE ?", title)}
 end
